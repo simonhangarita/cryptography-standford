@@ -48,4 +48,5 @@ def decrypt_ctr(key:str, ciphertext:str)->str:
         plaintext.extend(plain_block)
         counter+=1
     return plaintext.decode()
-print(decrypt_ctr(CTR_KEY,CTR_final_cypher_text))
+if __name__=="__main__":
+    print(decrypt_ctr(CTR_KEY,CTR_final_cypher_text))

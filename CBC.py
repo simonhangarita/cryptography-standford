@@ -58,4 +58,5 @@ def decrypt_cbc(key:str, ciphertext:str)->str:
         plaintext.extend(plain_block)
         previous_block=current_block
     return plaintext.decode()
-print(decrypt_cbc(CBC_KEY,CBC_final_cypher_text))
+if __name__=="__main__":
+    print(decrypt_cbc(CBC_KEY,CBC_final_cypher_text))
