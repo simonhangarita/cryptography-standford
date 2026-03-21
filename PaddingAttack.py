@@ -45,6 +45,7 @@ if __name__ == "__main__":
         print(new_ciphertext_hex)
         if po.query(new_ciphertext_hex) == True:
             return byte_guess
+        #if the padding is correct, we return the byte guess, otherwise we return -1 to indicate that the guess was incorrect
         return -1
     for number_of_block in range(len(cipher_blocks)-1,0,-1):
         for byte_number in range(15,-1,-1):
@@ -61,6 +62,7 @@ if __name__ == "__main__":
                 if byte_number == 15 and i == cipher_blocks[number_of_block-1][15]:
                     continue
                 correct_byte=guess_byte(previous_block,cipher_blocks[number_of_block],byte_number,i)
+                #if we find a byte different from -1, this means that we have found a correct byte and therefore can calculate the intermidiate value
                 if correct_byte!=-1:
                     print("Found correct byte: %d" % correct_byte)
                     intermediate_values[number_of_block][byte_number]=correct_byte ^ (16-byte_number)
